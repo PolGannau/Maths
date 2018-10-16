@@ -42,8 +42,7 @@ for p = 1 : 1 : m - 1
             AuxRows(2,ind) = A(c,ind);
         end
         for ind = 1 : 1 : n
-            A(p,ind) = AuxRows(2,ind);
-            A(c,ind) = AuxRows(1,ind);
+            A(p,ind) = AuxRows
         end
     end
 end
