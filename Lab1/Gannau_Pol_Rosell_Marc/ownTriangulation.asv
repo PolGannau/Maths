@@ -1,6 +1,5 @@
 function [At, bt]= ownTriangulation(A,b)
-% ownTriangulation function triangulates a matrix using pivots
-% ATENTION! it does not work with zeros in it's diagonal
+% ownTriangulation function triangulates a matrix
 [m,n] = size(A);
 At = A;
 bt = b;
