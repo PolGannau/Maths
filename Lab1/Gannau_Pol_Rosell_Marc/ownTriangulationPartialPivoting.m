@@ -1,24 +1,45 @@
 function [flag, At, bt]= ownTriangulationPartialPivoting(A,b)
-% [At,bt] = ownTriangulationPartialPivoting(A,b)
-% Performs a forward elimination proces over the matrix [A b]
-%	such that A*x = b and At*x = bt share the same solution x
-%	with partial pivoting
-% Inputs:
-%	A: Coefficients matrix
-%	b: Independent term
 % Outputs:
 %	flag: Flag = 0 -> The system of LE has a unique solution
 %	      Flag = 1 -> The system of LE has infinite or has not a solution		 
-%	At: Upper triangular matrix
-% 	bt: Modified independent term
+
 
 [m,n] = size(A);
 AuxRows = zeros(2,n);
 AuxCol = zeros(m,2);
+auxColChange = 0;
+auxRowChange = 0;
+toBreak = 0;
 c = 0;
+flag = 1;
 At = A;
 bt = b;
-for p = 1 : 1 : m - 1
+for p = 1 : 1 : m - 1 
+    toBreak = 0;
+    for col = p : 1 : n
+        for row = 1 : 1 : m
+            if A(row,col) == 0 && row > p
+                auxColChange = col;
+                auxRowChange = row;
+                for ind = 1 : 1 : m
+                AuxCol(ind,1) = A(ind,auxColChange);
+                AuxCol(ind,2) = A(ind,auxRowChange-1);
+                end
+                for ind = 1 : 1 : m
+                A(ind,auxRowChange-1) = AuxCol(ind,1);
+                A(ind,auxColChange) = AuxCol(ind,2);
+                end
+                toBreak =1;
+                break;
+            end
+            if toBreak == 1
+                break;
+            end
+        end
+        if toBreak == 1
+                break;
+        end
+    end
     if A(p,p) > 1E-8
         for j = p + 1 : 1 : m
             if A(j,p) > 1E-8
