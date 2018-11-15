@@ -1,4 +1,5 @@
 function [resultQuat] = multiplyQuat(q,p)
+%q y p deben ser vecotres columna
 q0 = q(1);
 p0 = p(1);
 qVec = q(2:end);
