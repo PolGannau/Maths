@@ -6,7 +6,5 @@ ctheta = cosd(theta);
 stheta = sind(theta);
 cphy = cosd(phy);
 sphy = sind(phy);
-result = [ctheta*cpsy (cpsy*stheta*sphy)-(cphy*spsy) (cpsy*cphy*stheta)+(spsy*sphy);
-            cphy*spsy (spsy*stheta*sphy)+(cphy*cpsy) (spsy*stheta*cphy)-(cpsy*sphy);
-            -stheta ctheta*sphy ctheta*cphy];
+result = [ctheta*cpsy (cpsy*stheta*sphy)-(cphy*spsy) (cpsy*cphy*stheta)+()]
 end
