@@ -19,3 +19,7 @@ f2Rw = [1 0 0;0 csphy snphy;0 -snphy csphy];
 f = 1/55;
 
 wDwc = [6;3;0];
+
+R1 = eAngles2rotM(pi/2,0,-pi/2);
+R2 = Eaa2rotM([0;0;1],(-pi/20));
+R3 = Eaa2rotM([0;1;0],0.3);

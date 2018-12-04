@@ -18,3 +18,5 @@ f2Rw = [1 0 0;0 csphy snphy;0 -snphy csphy];
 
 f = 1/55;
 
+wDwc = [6;3;0];
+
