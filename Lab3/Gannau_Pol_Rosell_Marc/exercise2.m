@@ -78,8 +78,8 @@ function calculate_button_Callback(hObject, eventdata, handles)
 % hObject    handle to calculate_button (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-x0=double(get(handles.x0_number,'String'));
-y0=double(get(handles.y0_number,'String'));
+x0=str2double(get(handles.x0_number,'String'));
+y0=str2double(get(handles.y0_number,'String'));
 velocity=get(handles.velocity_slider,'Value');
 angle=get(handles.angle_slider,'Value');
 vY=velocity*sind(angle);
