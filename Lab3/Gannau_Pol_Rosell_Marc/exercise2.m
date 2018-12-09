@@ -22,7 +22,7 @@ function varargout = exercise2(varargin)
 
 % Edit the above text to modify the response to help exercise2
 
-% Last Modified by GUIDE v2.5 08-Dec-2018 22:29:38
+% Last Modified by GUIDE v2.5 09-Dec-2018 12:06:29
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -73,10 +73,11 @@ function varargout = exercise2_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on button press in pushbutton1.
-function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
+% --- Executes on button press in calculate_button.
+function calculate_button_Callback(hObject, eventdata, handles)
+% hObject    handle to calculate_button (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
+plot (x_0_number+velocity*cosd(angle),y_0_number+velocitu*sind(angle));
 % handles    structure with handles and user data (see GUIDATA)
 
 
@@ -87,7 +88,7 @@ function velocity_slider_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 velocity = (get(handles.velocity_slider, 'Value'));
 s_velocity = sprintf('Velocity: %.2f', velocity);
-set(handles.balistic_velocity, 'String', s_velocity)
+set(handles.velocity, 'String', s_velocity)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 
@@ -109,7 +110,9 @@ function angle_slider_Callback(hObject, eventdata, handles)
 % hObject    handle to angle_slider (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+angle = (get(handles.angle_slider, 'Value'));
+s_angle = sprintf('Angle: %.2f', angle);
+set(handles.angle, 'String', s_angle);
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 
@@ -119,9 +122,7 @@ function angle_slider_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to angle_slider (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-angle = (get(handles.angle_slider, 'Value'));
-s_angle = sprintf('Angle: %.2f', angle);
-set(handles.balistic_angle, 'String', s_angle)
+
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
@@ -129,18 +130,18 @@ end
 
 
 
-function edit1_Callback(hObject, eventdata, handles)
-% hObject    handle to edit1 (see GCBO)
+function x0_number_Callback(hObject, eventdata, handles)
+% hObject    handle to x0_number (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit1 as text
-%        str2double(get(hObject,'String')) returns contents of edit1 as a double
+x_0_number=x0_number;
+% Hints: get(hObject,'String') returns contents of x0_number as text
+%        str2double(get(hObject,'String')) returns contents of x0_number as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit1 (see GCBO)
+function x0_number_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to x0_number (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -152,18 +153,18 @@ end
 
 
 
-function edit2_Callback(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
+function y0_number_Callback(hObject, eventdata, handles)
+% hObject    handle to y0_number (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit2 as text
-%        str2double(get(hObject,'String')) returns contents of edit2 as a double
+y_0_number=y0_number;
+% Hints: get(hObject,'String') returns contents of y0_number as text
+%        str2double(get(hObject,'String')) returns contents of y0_number as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit2_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
+function y0_number_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to y0_number (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -175,7 +176,16 @@ end
 
 
 % --- Executes during object deletion, before destroying properties.
-function uipanel1_DeleteFcn(hObject, eventdata, handles)
-% hObject    handle to uipanel1 (see GCBO)
+function controls_DeleteFcn(hObject, eventdata, handles)
+% hObject    handle to controls (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes during object creation, after setting all properties.
+function axes_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes

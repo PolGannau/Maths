@@ -22,7 +22,7 @@ function varargout = exercise2(varargin)
 
 % Edit the above text to modify the response to help exercise2
 
-% Last Modified by GUIDE v2.5 08-Dec-2018 22:57:19
+% Last Modified by GUIDE v2.5 09-Dec-2018 11:53:18
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -77,6 +77,7 @@ varargout{1} = handles.output;
 function calculate_button_Callback(hObject, eventdata, handles)
 % hObject    handle to calculate_button (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
+plot (x_0_number+velocity*cosd(angle),y_0_number+velocitu*sind(angle));
 % handles    structure with handles and user data (see GUIDATA)
 
 
@@ -133,7 +134,7 @@ function x0_number_Callback(hObject, eventdata, handles)
 % hObject    handle to x0_number (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+x_0_number=x0_number;
 % Hints: get(hObject,'String') returns contents of x0_number as text
 %        str2double(get(hObject,'String')) returns contents of x0_number as a double
 
@@ -156,7 +157,7 @@ function y0_number_Callback(hObject, eventdata, handles)
 % hObject    handle to y0_number (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+y_0_number=y0_number;
 % Hints: get(hObject,'String') returns contents of y0_number as text
 %        str2double(get(hObject,'String')) returns contents of y0_number as a double
 
@@ -180,3 +181,11 @@ function controls_DeleteFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+
+% --- Executes during object creation, after setting all properties.
+function axes_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes
