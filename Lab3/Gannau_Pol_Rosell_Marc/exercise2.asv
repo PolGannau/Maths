@@ -87,8 +87,8 @@ time=((-vY-sqrt(vY^2+2*9.81*y0))/-9.81);
 xf=x0+velocity*cosd(angle)*time;
 s_xf=sprintf('Range: %.2f', xf);
 set(handles.range, 'String', s_xf);
-yMax=(velocity^2*sind(angle)^2)/(2*-9.81);
-s_yMax=sprintf('Max height: %.2f', yMax);
+yMax=(velocity^2*sind(angle))/(2*-9.81);
+s_yMax=sprintf('Max haight: %.2f', yMax);
 set(handles.maxheight, 'String', s_Ymax);
 
 % --- Executes on slider movement.
