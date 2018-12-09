@@ -103,11 +103,13 @@ axes(handles.axes1);
 cla;
 hold on;
 set(handles.axes1,'Visible','off');
+set(handles.axes1,'Clipping','off');
+set(handles.axes1,'View',[10,10]);
 view(handles.axes1,[57 20]);
 plot3([ow(1);xw(1)],[ow(2);xw(2)],[ow(3);xw(3)],'Color',[0,0,1],'LineWidth',2);
 plot3([ow(1);yw(1)],[ow(2);yw(2)],[ow(3);yw(3)],'Color',[0,1,0],'LineWidth',2);
 plot3([ow(1);zw(1)],[ow(2);zw(2)],[ow(3);zw(3)],'Color',[1,0,0],'LineWidth',2);
-plot3([ow(1);w(1)],[ow(2);w(2)],[ow(3);w(3)],'Color',[1,1,1],'LineWidth',2);
+plot3([ow(1);w(1)],[ow(2);w(2)],[ow(3);w(3)],'Color',[0.5,0.5,0.5],'LineWidth',2);
 hold off;
 drawnow;
 
