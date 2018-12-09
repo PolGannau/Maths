@@ -115,8 +115,8 @@ function velocity_slider_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 velocity = get(hObject, 'Value');
-s_velocity = sprintf('Velocity: %d', velocity);
-set(handles.velocity.hObject, 'String', s_velocity);
+s_velocity = sprintf('Velocity: %.2f', velocity);
+set(handles.velocity, 'String', s_velocity);
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 
@@ -139,7 +139,7 @@ function angle_slider_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 angle = (get(hObject, 'Value'));
-s_angle = sprintf('Angle: %d', angle);
+s_angle = sprintf('Angle: %.2f', angle);
 set(handles.angle, 'String', s_angle);
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
