@@ -22,7 +22,7 @@ function varargout = exercise2(varargin)
 
 % Edit the above text to modify the response to help exercise2
 
-% Last Modified by GUIDE v2.5 09-Dec-2018 18:53:13
+% Last Modified by GUIDE v2.5 09-Dec-2018 19:56:23
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -78,8 +78,8 @@ function calculate_button_Callback(hObject, eventdata, handles)
 % hObject    handle to calculate_button (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-x0=str2double(get(handles.x0_number,'String'));
-y0=str2double(get(handles.y0_number,'String'));
+x0=double(get(handles.x0_number,'String'));
+y0=double(get(handles.y0_number,'String'));
 velocity=get(handles.velocity_slider,'Value');
 angle=get(handles.angle_slider,'Value');
 vY=velocity*sind(angle);
@@ -114,7 +114,7 @@ function velocity_slider_Callback(hObject, eventdata, handles)
 % hObject    handle to velocity_slider (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-velocity = (get(handles.velocity_slider, 'Value'));
+velocity = get(handles.velocity_slider, 'Value');
 s_velocity = sprintf('Velocity: %.2f', velocity);
 set(handles.velocity, 'String', s_velocity);
 % Hints: get(hObject,'Value') returns position of slider
@@ -202,3 +202,11 @@ function y0_number_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+function range_CreateFcn(hObject, eventdata, handles)
+
+
+function controls_DeleteFcn(hObject, eventdata, handles)
+
+
+function axes_CreateFcn(hObject, eventdata, handles)
