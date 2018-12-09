@@ -22,7 +22,7 @@ function varargout = exercise2(varargin)
 
 % Edit the above text to modify the response to help exercise2
 
-% Last Modified by GUIDE v2.5 09-Dec-2018 12:54:18
+% Last Modified by GUIDE v2.5 09-Dec-2018 18:53:13
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -83,13 +83,23 @@ y0=str2double(get(handles.y0_number,'String'));
 velocity=get(handles.velocity_slider,'Value');
 angle=get(handles.angle_slider,'Value');
 vY=velocity*sind(angle);
+vX=velocity*cosd(angle);
 time=((-vY-sqrt(vY^2+2*9.81*y0))/-9.81);
-xf=x0+velocity*cosd(angle)*time;
+xf=x0+vX*time;
 s_xf=sprintf('Range: %.2f', xf);
 set(handles.range, 'String', s_xf);
-yMax=(velocity^2*sind(angle))/(2*-9.81);
-s_yMax=sprintf('Max haight: %.2f', yMax);
-set(handles.maxheight, 'String', s_Ymax);
+if angle > 0
+t = vY/9.81;
+yMax=y0+vY*t-(9.81/2)*t^2;
+else
+yMax = y0;
+end
+s_yMax=sprintf('Max height: %.2f', yMax);
+set(handles.maxheight, 'String', s_yMax);
+x = [x0:0.5:]
+plot()
+drawnow;
+
 
 % --- Executes on slider movement.
 function velocity_slider_Callback(hObject, eventdata, handles)
@@ -127,6 +137,7 @@ set(handles.angle, 'String', s_angle);
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 
 
+
 % --- Executes during object creation, after setting all properties.
 function angle_slider_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to angle_slider (see GCBO)
@@ -145,6 +156,7 @@ function x0_number_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 % Hints: get(hObject,'String') returns contents of x0_number as text
+
 %        str2double(get(hObject,'String')) returns contents of x0_number as a double
 
 
@@ -171,6 +183,7 @@ function y0_number_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
+
 function y0_number_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to y0_number (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -181,19 +194,3 @@ function y0_number_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
-
-% --- Executes during object deletion, before destroying properties.
-function controls_DeleteFcn(hObject, eventdata, handles)
-% hObject    handle to controls (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes during object creation, after setting all properties.
-function axes_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to axes (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: place code in OpeningFcn to populate axes
