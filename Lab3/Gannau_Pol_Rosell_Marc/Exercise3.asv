@@ -81,17 +81,11 @@ u = zeros(3,1);
 u(1) = str2double(get(handles.u_1,'String'));
 u(2) = str2double(get(handles.u_2,'String'));
 u(3) = str2double(get(handles.u_3,'String'));
-u = u/sqrt(u'*u);
 v = zeros(3,1);
 v(1) = str2double(get(handles.v_1,'String'));
 v(2) = str2double(get(handles.v_2,'String'));
 v(3) = str2double(get(handles.v_3,'String'));
-v = v/sqrt(v'*v);
-cs = get(handles.angle_slider,'Value');
-sn = cs;
-cs = cosd(cs/2);
-sn = sind(sn/2);
-q_a = [cs;sn*u];
+q_a = [cosd(get(handles.angle_slider,'Value')/2);sind(get(handles.angle_slider,'Value')/2)*u];
 q_b = [0;v];
 q_c = multiplyQuat(multiplyQuat(q_a,q_b),conjugateQuaternion(q_a));
 w = q_c(2:4);
@@ -100,16 +94,13 @@ yw = [0 1 0]';
 zw = [0 0 1]';
 ow = [0;0;0];
 axes(handles.axes1);
-cla;
 hold on;
-set(handles.axes1,'Visible','off');
-view(handles.axes1,[57 20]);
-plot3([ow(1);xw(1)],[ow(2);xw(2)],[ow(3);xw(3)],'Color',[0,0,1],'LineWidth',2);
+
+
+plot3([ow(1);xw(1)],[ow(2);xw(2)],[ow(3);xw(3)],'Color',[0,1,0],'LineWidth',2);
 plot3([ow(1);yw(1)],[ow(2);yw(2)],[ow(3);yw(3)],'Color',[0,1,0],'LineWidth',2);
 plot3([ow(1);zw(1)],[ow(2);zw(2)],[ow(3);zw(3)],'Color',[1,0,0],'LineWidth',2);
-plot3([ow(1);w(1)],[ow(2);w(2)],[ow(3);w(3)],'Color',[1,1,1],'LineWidth',2);
 hold off;
-drawnow;
 
 
 % --- Executes on slider movement.
