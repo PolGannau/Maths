@@ -1,3 +1,0 @@
-function rotVbyq([v1;v2;v3],[q1;q2;q3;q4]):
-%this function rotates a Vector by using Quaternion multiplications.
-V = [0;v1;v2;v3];
